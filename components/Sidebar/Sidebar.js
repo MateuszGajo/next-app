@@ -4,7 +4,7 @@ const { SubMenu } = Menu;
 
 class Sider extends React.Component {
   // submenu keys of first level
-  rootSubmenuKeys = ["sub1", "sub2", "sub4", "sub5"];
+  rootSubmenuKeys = ["sub1", "sub2", "sub3", "sub4"];
 
   state = {
     openKeys: ["sub1"]
@@ -36,7 +36,7 @@ class Sider extends React.Component {
           title={
             <span>
               <Icon type="mail" />
-              <span>Navigation One</span>
+              <span className="navigation-name">Navigation One</span>
             </span>
           }
         >
@@ -50,23 +50,19 @@ class Sider extends React.Component {
           title={
             <span>
               <Icon type="appstore" />
-              <span>Navigation Two</span>
+              <span className="navigation-name">Navigation Two</span>
             </span>
           }
         >
           <Menu.Item key="5">Option 5</Menu.Item>
           <Menu.Item key="6">Option 6</Menu.Item>
-          <SubMenu key="sub3" title="Submenu">
-            <Menu.Item key="7">Option 7</Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
-          </SubMenu>
         </SubMenu>
         <SubMenu
-          key="sub4"
+          key="sub3"
           title={
             <span>
               <Icon type="setting" />
-              <span>Navigation Three</span>
+              <span className="navigation-name">Navigation Three</span>
             </span>
           }
         >
@@ -76,11 +72,11 @@ class Sider extends React.Component {
           <Menu.Item key="12">Option 12</Menu.Item>
         </SubMenu>
         <SubMenu
-          key="sub5"
+          key="sub4"
           title={
             <span>
               <Icon type="setting" />
-              <span>Navigation Four</span>
+              <span className="navigation-name">Navigation Four</span>
             </span>
           }
         >
