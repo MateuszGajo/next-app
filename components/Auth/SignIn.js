@@ -34,7 +34,7 @@ const NormalLoginForm = props => {
         <Input
           prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
           type="password"
-          placeholder="Password"
+          placeholder="Hasło"
           onChange={e => {
             setPassword(e.target.value);
           }}
@@ -44,14 +44,14 @@ const NormalLoginForm = props => {
         {getFieldDecorator("remember", {
           valuePropName: "checked",
           initialValue: true
-        })(<Checkbox>Remember me</Checkbox>)}
+        })(<Checkbox>Zapamiętaj mnie</Checkbox>)}
         <a className="login-form-forgot" href="">
-          Forgot password
+          Zapomniałem hasła
         </a>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
+          Zaloguj się
         </Button>
-        Or <a href="">register now!</a>
+        Or <a href="">Zarejstruj się teraz!</a>
       </Form.Item>
     </Form>
   );

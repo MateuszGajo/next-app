@@ -8,11 +8,6 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import ContentTable from "../components/Table/ContentTable";
 import { logOut } from "../store/action/authAction";
 const dashboard = props => {
-  (async function() {
-    if (!props.auth) {
-      Router.push("/");
-    }
-  })();
   return (
     <section className="wrapper">
       <PageHeader
@@ -43,9 +38,18 @@ const dashboard = props => {
   );
 };
 
-dashboard.getInitialProps = async function() {
+dashboard.getInitialProps = async function({ res, store }) {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
   const data = await response.json();
+  const auth = store.getState().auth;
+  if (res && !auth) {
+    res.writeHead(302, {
+      Location: "/"
+    });
+    res.end();
+  } else if (!auth) {
+    Router.push("/");
+  }
   return {
     data
   };

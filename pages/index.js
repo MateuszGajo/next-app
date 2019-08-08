@@ -5,11 +5,7 @@ import SignIn from "../components/Auth/SignIn";
 import "antd/dist/antd.css";
 import "../scss/style.scss";
 const index = ({ auth }) => {
-  (async function() {
-    if (auth) {
-      Router.push("/dashboard");
-    }
-  })();
+  auth && Router.push("/dashboard");
 
   return (
     <main>

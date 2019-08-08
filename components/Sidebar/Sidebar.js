@@ -35,53 +35,53 @@ class Sider extends React.Component {
           title={
             <span>
               <Icon type="mail" />
-              <span className="navigation-name">Navigation One</span>
+              <span className="navigation-name">Pierwsza Nawigacja</span>
             </span>
           }
         >
-          <Menu.Item key="1">Option 1</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
-          <Menu.Item key="3">Option 3</Menu.Item>
-          <Menu.Item key="4">Option 4</Menu.Item>
+          <Menu.Item key="1">Opcja 1</Menu.Item>
+          <Menu.Item key="2">Opcja 2</Menu.Item>
+          <Menu.Item key="3">Opcja 3</Menu.Item>
+          <Menu.Item key="4">Opcja 4</Menu.Item>
         </SubMenu>
         <SubMenu
           key="sub2"
           title={
             <span>
               <Icon type="appstore" />
-              <span className="navigation-name">Navigation Two</span>
+              <span className="navigation-name">Druga Nawigacja</span>
             </span>
           }
         >
-          <Menu.Item key="5">Option 5</Menu.Item>
-          <Menu.Item key="6">Option 6</Menu.Item>
+          <Menu.Item key="5">Opcja 5</Menu.Item>
+          <Menu.Item key="6">Opcja 6</Menu.Item>
         </SubMenu>
         <SubMenu
           key="sub3"
           title={
             <span>
               <Icon type="setting" />
-              <span className="navigation-name">Navigation Three</span>
+              <span className="navigation-name">Trzecia Nawigacja</span>
             </span>
           }
         >
-          <Menu.Item key="9">Option 9</Menu.Item>
-          <Menu.Item key="10">Option 10</Menu.Item>
-          <Menu.Item key="11">Option 11</Menu.Item>
-          <Menu.Item key="12">Option 12</Menu.Item>
+          <Menu.Item key="9">Opcja 9</Menu.Item>
+          <Menu.Item key="10">Opcja 10</Menu.Item>
+          <Menu.Item key="11">Opcja 11</Menu.Item>
+          <Menu.Item key="12">Opcja 12</Menu.Item>
         </SubMenu>
         <SubMenu
           key="sub4"
           title={
             <span>
               <Icon type="setting" />
-              <span className="navigation-name">Navigation Four</span>
+              <span className="navigation-name">Czwarta Nawigacja</span>
             </span>
           }
         >
-          <Menu.Item key="9">Option 13</Menu.Item>
-          <Menu.Item key="10">Option 14</Menu.Item>
-          <Menu.Item key="11">Option 15</Menu.Item>
+          <Menu.Item key="9">Opcja 13</Menu.Item>
+          <Menu.Item key="10">Opcja 14</Menu.Item>
+          <Menu.Item key="11">Opcja 15</Menu.Item>
         </SubMenu>
       </Menu>
     );

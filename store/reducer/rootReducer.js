@@ -9,6 +9,7 @@ const rootReducer = (state = initState, action) => {
     case "SIGNIN_EMAIL_ERROR":
       return {
         ...state,
+        passwordError: "",
         emailError: action.msg
       };
     case "SIGNIN_PASSWORD_ERROR":

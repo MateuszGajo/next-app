@@ -32,6 +32,7 @@ const ContentTable = ({ data }) => {
       key: "companyName"
     }
   ];
+
   return (
     <Table
       dataSource={dataSource}
