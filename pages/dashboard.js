@@ -8,6 +8,11 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import ContentTable from "../components/Table/ContentTable";
 import { logOut } from "../store/action/authAction";
 const dashboard = props => {
+  (async function() {
+    if (!props.auth) {
+      Router.push("/");
+    }
+  })();
   return (
     <section className="wrapper">
       <PageHeader
@@ -45,7 +50,11 @@ dashboard.getInitialProps = async function() {
     data
   };
 };
-
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logOut())
@@ -53,6 +62,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(dashboard);
