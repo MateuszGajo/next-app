@@ -1,55 +1,44 @@
+import React, { useState } from "react";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import { connect } from "react-redux";
 import { signIn } from "../../store/action/authAction";
 
 const NormalLoginForm = props => {
+  const { emailError, passwordError } = props.state;
+
   const handleSubmit = e => {
     e.preventDefault();
-    props.form.validateFields((err, values) => {
-      const validateEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
-      if (!validateEmail.test(values.mail) && values.mail !== "admin")
-        return props.form.setFields({
-          mail: {
-            value: values.mail,
-            errors: [new Error("Wpisz poprawny email!")]
-          }
-        });
-      else if (values.password !== "admin")
-        return props.form.setFields({
-          mail: {
-            value: values.mail,
-            errors: [""]
-          },
-          password: {
-            value: values.password,
-            errors: [new Error("Nieprawidłowe hasło!")]
-          }
-        });
-      !err && props.signin(values);
-    });
+    props.signin({ email, password });
   };
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { getFieldDecorator } = props.form;
   return (
     <Form onSubmit={handleSubmit} className="login-form">
-      <Form.Item>
-        {getFieldDecorator("mail", {})(
-          <Input
-            prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
-            placeholder="E-mail"
-          />
-        )}
+      <Form.Item
+        validateStatus={emailError ? "error" : null}
+        help={emailError ? emailError : null}
+      >
+        <Input
+          prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
+          placeholder="E-mail"
+          onChange={e => {
+            setEmail(e.target.value);
+          }}
+        />
       </Form.Item>
-      <Form.Item>
-        {getFieldDecorator("password", {
-          rules: [{ required: true, message: "Wpisz hasło!" }]
-        })(
-          <Input
-            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
-            type="password"
-            placeholder="Password"
-          />
-        )}
+      <Form.Item
+        validateStatus={passwordError ? "error" : null}
+        help={passwordError ? passwordError : null}
+      >
+        <Input
+          prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+          type="password"
+          placeholder="Password"
+          onChange={e => {
+            setPassword(e.target.value);
+          }}
+        />
       </Form.Item>
       <Form.Item>
         {getFieldDecorator("remember", {
@@ -69,13 +58,17 @@ const NormalLoginForm = props => {
 };
 
 const SignIn = Form.create({ name: "normal_login" })(NormalLoginForm);
-
+const mapStateToProps = state => {
+  return {
+    state
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
     signin: creds => dispatch(signIn(creds))
   };
 };
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SignIn);

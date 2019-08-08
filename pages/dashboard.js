@@ -8,7 +8,6 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import ContentTable from "../components/Table/ContentTable";
 import { logOut } from "../store/action/authAction";
 const dashboard = props => {
-  console.log(props.auth);
   return (
     <section className="wrapper">
       <PageHeader

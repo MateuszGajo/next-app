@@ -3,7 +3,6 @@ import { Menu, Icon } from "antd";
 const { SubMenu } = Menu;
 
 class Sider extends React.Component {
-  // submenu keys of first level
   rootSubmenuKeys = ["sub1", "sub2", "sub3", "sub4"];
 
   state = {
