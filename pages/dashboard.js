@@ -1,13 +1,13 @@
 import { PageHeader } from "antd";
 import { Row, Col } from "antd";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import Router from "next/router";
 import fetch from "isomorphic-unfetch";
-import "antd/dist/antd.css";
 import Sidebar from "../components/Sidebar/Sidebar";
 import ContentTable from "../components/Table/ContentTable";
 import { logOut } from "../store/action/authAction";
 const dashboard = props => {
+  const dispatch = useDispatch();
   return (
     <section className="wrapper">
       <PageHeader
@@ -18,7 +18,7 @@ const dashboard = props => {
           <h3
             className="logout-title"
             onClick={() => {
-              props.logout();
+              dispatch(logOut());
               Router.push("/");
             }}
           >
@@ -54,18 +54,5 @@ dashboard.getInitialProps = async function({ res, store }) {
     data
   };
 };
-const mapStateToProps = state => {
-  return {
-    auth: state.auth
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    logout: () => dispatch(logOut())
-  };
-};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(dashboard);
+export default dashboard;

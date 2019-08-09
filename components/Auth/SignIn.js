@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { signIn } from "../../store/action/authAction";
 
 const NormalLoginForm = props => {
-  const { emailError, passwordError } = props.state;
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  const { emailError, passwordError } = state;
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.signin({ email, password });
+    dispatch(signIn({ email, password }));
   };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,17 +60,5 @@ const NormalLoginForm = props => {
 };
 
 const SignIn = Form.create({ name: "normal_login" })(NormalLoginForm);
-const mapStateToProps = state => {
-  return {
-    state
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    signin: creds => dispatch(signIn(creds))
-  };
-};
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignIn);
+
+export default SignIn;

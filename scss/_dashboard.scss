@@ -1,16 +1,13 @@
 .page-header {
   background-color: #1f1ab2;
-  //   background-color: #1890ff;
 }
-.ant-page-header-back-button {
+.ant-page-header-back-button,
+.ant-page-header-heading-title {
   color: white;
 }
 .ant-page-header-back-button:focus,
 .ant-page-header-back-button:hover {
   color: #888;
-}
-.ant-page-header-heading-title {
-  color: white;
 }
 .logout-title {
   color: white;

@@ -1,12 +1,12 @@
 import { Row, Col } from "antd";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import Router from "next/router";
 import SignIn from "../components/Auth/SignIn";
 import "antd/dist/antd.css";
 import "../scss/style.scss";
-const index = ({ auth }) => {
+const index = () => {
+  const auth = useSelector(state => state.auth);
   auth && Router.push("/dashboard");
-
   return (
     <main>
       <Row
@@ -22,10 +22,5 @@ const index = ({ auth }) => {
     </main>
   );
 };
-const mapStateToProps = state => {
-  return {
-    auth: state.auth
-  };
-};
 
-export default connect(mapStateToProps)(index);
+export default index;
