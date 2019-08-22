@@ -1,19 +1,31 @@
 const initState = {
-  auth: false
+  auth: false,
+  errors: {
+    email: "",
+    password: ""
+  }
 };
 
 const rootReducer = (state = initState, action) => {
   switch (action.type) {
     case "SIGNIN_SUCCESS":
-      return { ...state, auth: true, emailError: "", passwordError: "" };
+      return { ...state, auth: true, errors: { email: "", password: "" } };
     case "SIGNIN_EMAIL_ERROR":
       return {
         ...state,
-        passwordError: "",
-        emailError: action.msg
+        errors: {
+          email: action.msg,
+          password: ""
+        }
       };
     case "SIGNIN_PASSWORD_ERROR":
-      return { ...state, emailError: "", passwordError: action.msg };
+      return {
+        ...state,
+        errors: {
+          email: "",
+          password: action.msg
+        }
+      };
     case "LOGOUT":
       return { ...state, auth: false };
     default:

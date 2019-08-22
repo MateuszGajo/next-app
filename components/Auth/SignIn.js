@@ -6,7 +6,7 @@ import { signIn } from "../../store/action/authAction";
 const NormalLoginForm = props => {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
-  const { emailError, passwordError } = state;
+  const { errors } = state;
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,8 +18,8 @@ const NormalLoginForm = props => {
   return (
     <Form onSubmit={handleSubmit} className="login-form">
       <Form.Item
-        validateStatus={emailError ? "error" : null}
-        help={emailError ? emailError : null}
+        validateStatus={errors.email ? "error" : null}
+        help={errors.email ? errors.email : null}
       >
         <Input
           prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -30,8 +30,8 @@ const NormalLoginForm = props => {
         />
       </Form.Item>
       <Form.Item
-        validateStatus={passwordError ? "error" : null}
-        help={passwordError ? passwordError : null}
+        validateStatus={errors.password ? "error" : null}
+        help={errors.password ? errors.password : null}
       >
         <Input
           prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}

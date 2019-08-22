@@ -1,12 +1,12 @@
 export const signIn = credentials => {
   const { email, password } = credentials;
   const validateEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
-  if (!validateEmail.test(email) && email !== "admin")
+  if (!validateEmail.test(email))
     return {
       type: "SIGNIN_EMAIL_ERROR",
       msg: "Zły format email"
     };
-  else if (email !== "admin")
+  else if (email !== "admin@admin.pl")
     return {
       type: "SIGNIN_EMAIL_ERROR",
       msg: "Nie mamy użytkownika o podanym adresie email"
